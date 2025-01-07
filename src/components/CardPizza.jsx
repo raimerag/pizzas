@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const CardPizza = ({ pizzas, addToCart, RestToCart, cart }) => {
-  const { tittle, description, price, img, id, quantity } = pizzas;
+  const { tittle, ingredients, price, img, id, quantity } = pizzas;
   const novisible = useMemo(
     () => quantity === 0 || quantity === undefined,
     [cart]
@@ -22,7 +22,11 @@ const CardPizza = ({ pizzas, addToCart, RestToCart, cart }) => {
           <ul>
             <h2 className="text-center">{tittle}</h2>
             <h3 className="text-center">Ingredientes:</h3>
-            <p>🍕{description}</p>
+            <p>
+              {ingredients.map((e, i) => (
+                <li key={i}>🍕{e}</li>
+              ))}
+            </p>
             <p>Precio: {price}</p>
           </ul>
         </div>
